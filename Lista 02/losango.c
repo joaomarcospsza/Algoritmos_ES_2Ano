@@ -12,7 +12,7 @@ int main(){
     printf("Informe a Diagonal Maior do losango: ");
     scanf("%f", &diagonal_maior);
 
-    printf("Informe a Diagonal Menor do losango: ");
+    printf("Digite a Diagonal Menor do losango: ");
     scanf("%f", &diagonal_menor);
 
     area = (diagonal_maior * diagonal_menor)/2;
