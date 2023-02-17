@@ -9,7 +9,7 @@ int main(){
 
     for (i = 0; i < count; i++)
     {
-        printf("Digite o valor do %dº numero: ", i+1);
+        printf("Informe o valor do %d numero: ", i+1);
         scanf("%d", &numero);
 
         if(numero > menor){
