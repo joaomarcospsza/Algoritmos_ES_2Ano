@@ -11,7 +11,7 @@ int main()
 
     printf("Digite o primeiro valor: ");
     scanf("%d", &num1);
-    printf("Digite o segundo valor: ");
+    printf("Informe o segundo valor: ");
     scanf("%d", &num2);
 
     while (num1 == num2)
