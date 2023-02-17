@@ -11,10 +11,10 @@ int main(){
 
     float hipotenusa, cateto_a, cateto_b;
 
-    printf("Informe o valor do cateto A: ");
+    printf("Digite o valor do cateto A: ");
     scanf("%f", &cateto_a);
 
-    printf("Informe o valor do cateto B: ");
+    printf("Digite o valor do cateto B: ");
     scanf("%f", &cateto_b);
 
     hipotenusa = sqrt((cateto_a * cateto_a) + (cateto_b*cateto_b));
