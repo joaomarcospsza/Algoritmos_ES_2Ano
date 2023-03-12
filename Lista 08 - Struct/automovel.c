@@ -23,7 +23,7 @@ int main()
     struct veiculo carros[100];
     int opcao = 0, count_veiculo = 0;
 
-    while (opcao != 2)
+    while (opcao != 3)
     {
         printf("1 - Cadastrar novo Veiculo \n");
         printf("2 - Veiculos cadastrados \n");
@@ -69,10 +69,6 @@ int main()
             case 'G':
                 printf("Tipo escolhido: Gasolina.\n");
                 break;
-
-            default:
-                printf("Nao e um combustível valido.\n");
-                break;
             }
 
             printf("Digite o preco: ");
@@ -96,7 +92,7 @@ int main()
                 printf("Veiculos cadastrados:\n");
                 for (int i = 0; i < count_veiculo; i++)
                 {
-                    printf("Veiculo %i: %s, %s, %s, %s , %s \n", i + 1, carros[i].fabricante, carros[i].modelo, carros[i].ano, carros[i].preco, carros[i].cor);
+                    printf("Veiculo %i: %s, %s, %d, %.2f, %s \n", i + 1, carros[i].fabricante, carros[i].modelo, carros[i].ano, carros[i].preco, carros[i].cor);
                 }
             }
         }
@@ -120,7 +116,7 @@ int main()
         printf("Lista final de veiculos cadastrados:\n");
         for (int i = 0; i < count_veiculo; i++)
         {
-            printf("Veiculo %i: %s, %s, %s, %s \n", i + 1, carros[i].modelo, carros[i].ano, carros[i].preco, carros[i].cor);
+            printf("Veiculo %i: %s, %s, %d, %.2f, %s \n", i + 1, carros[i].fabricante, carros[i].modelo, carros[i].ano, carros[i].preco, carros[i].cor);
         }
     }
 
