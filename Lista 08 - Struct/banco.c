@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
+#include <math.h>
 
 /*Defina um registro para armazenar os seguintes dados de clientes de um banco:
 nome do cliente, código da agência, data de nascimento (formato dd/mm/aaaa),
@@ -8,7 +9,7 @@ saldo atual e situação (cliente ‘V’IP ou ‘N’ORMAL). */
 struct cliente
 {
     char nome[50];
-    char codigo_agencia[10];
+    int codigo_agencia;
     int dia, mes, ano;
     float saldo_atual;
     char situacao;
@@ -18,6 +19,8 @@ int main()
 {
     struct cliente clientes[100];
     int opcao = 0, count_cli = 0;
+    char entrada[100];
+    int valido = 1;
 
     while (opcao != 3)
     {
@@ -26,6 +29,7 @@ int main()
         printf("3 - Sair \n");
         printf("Opcao: ");
         scanf("%i", &opcao);
+        printf("\n");
 
         while (opcao < 1 || opcao > 3)
         {
@@ -34,14 +38,38 @@ int main()
             printf("2 - Lista de Clientes \n");
             printf("3 - Sair \n");
             scanf("%i", &opcao);
+            printf("\n");
         }
 
         if (opcao == 1)
         {
             printf("Nome Cliente: ");
             scanf("%s", clientes[count_cli].nome);
-            printf("Codigo da Agencia: ");
-            scanf("%s", &clientes[count_cli].codigo_agencia);
+
+            // VALIDANDO APENAS NÚMEROS PARA O CODIGO DA AGENCIA
+            do
+            {
+                printf("Codigo da Agencia: ");
+                scanf("%s", entrada);
+
+                valido = 1;
+                for (int i = 0; entrada[i] != '\0'; i++)
+                {
+                    if (!isdigit(entrada[i]))
+                    {
+                        valido = 0; // encontrou um caractere não numérico
+                        break;      // interrompe o loop
+                    }
+                }
+
+                if (!valido)
+                {
+                    printf("Entrada invalida. Digite apenas numeros.\n");
+                }
+
+            } while (!valido);
+            clientes[count_cli].codigo_agencia = atoi(entrada); // converte a entrada para um inteiro
+
             printf("Data Nascimento (DIA): ");
             scanf("%i", &clientes[count_cli].dia);
             printf("Data Nascimento (MES): ");
@@ -93,13 +121,14 @@ int main()
                 printf("Sua situacao e de um cliente NORMAL.");
                 break;
             }
-            printf("\nCliente cadastrado com sucesso!\n");
+
+            printf("\n Cliente cadastrado com sucesso!\n");
+            printf("\n");
 
             count_cli++;
         }
         else if (opcao == 2)
         {
-
             if (count_cli == 0)
             {
                 printf("Nenhum cliente registrado. \n");
@@ -109,9 +138,8 @@ int main()
                 printf("Lista de Clientes: \n");
                 for (int i = 0; i < count_cli; i++)
                 {
-                    printf("Teste de print\n"); // adicionado para teste
-
-                    printf("Nome: %s\n Codigo Agencia:%s\n Data Nascimento: %i/%i/%i\n Saldo:R$%.2f\n Situacao: %s", clientes[i].nome, clientes[i].codigo_agencia, clientes[i].dia, clientes[i].mes, clientes[i].ano, clientes[i].saldo_atual, clientes[i].situacao);
+                    printf("Cliente: %i, Nome: %s, Codigo Agencia: %i, Data nascimento: %i/%i/%i, Saldo Atual:R$%.2f, Situacao: %c \n", i + 1, clientes[i].nome, clientes[i].codigo_agencia, clientes[i].dia, clientes[i].mes, clientes[i].ano, clientes[i].saldo_atual, clientes[i].situacao);
+                    printf("\n");
                 }
             }
         }
@@ -120,12 +148,6 @@ int main()
             printf("Saindo do programa...");
             break;
         }
-    }
-
-    printf("Lista de Clientes: \n");
-    for (int i = 0; i < count_cli; i++)
-    {
-        printf("Nome: %s\n Codigo Agencia:%s\n Data Nascimento: %i/%i/%i\n Saldo:R$%.2f\n Situacao: %s", clientes[i].nome, clientes[i].codigo_agencia, clientes[i].dia, clientes[i].mes, clientes[i].ano, clientes[i].saldo_atual, clientes[i].situacao);
     }
 
     return 0;
