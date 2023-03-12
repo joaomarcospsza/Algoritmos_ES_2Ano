@@ -26,7 +26,8 @@ int main()
     while (opcao != 2)
     {
         printf("1 - Cadastrar novo Veiculo \n");
-        printf("2 - Sair \n");
+        printf("2 - Veiculos cadastrados \n");
+        printf("3 - Sair \n");
         printf("Informe a opcao: ");
         scanf("%i", &opcao);
 
@@ -49,14 +50,31 @@ int main()
 
             printf("Digite o tipo de combustivel (A ou G): ");
             scanf(" %c", &carros[count_veiculo].tipo_combustivel);
+            carros[count_veiculo].tipo_combustivel = toupper(carros[count_veiculo].tipo_combustivel); // convertendo para MAIÚSCULA
 
-            while(carros[count_veiculo].tipo_combustivel != 'A' || carros[count_veiculo].tipo_combustivel != 'G');
+            while (carros[count_veiculo].tipo_combustivel != 'A' && carros[count_veiculo].tipo_combustivel != 'G')
             {
-                printf("Tipo de combustivel errado..");
-                printf("Digite o tipo de combustivel (A ou G): ");
-                scanf(" %c", &carros[count_veiculo].tipo_combustivel);
+                printf("Tipo de combustivel errado.\n");
+                printf("Informe o tipo novamente (A ou G):");
+                scanf("%c", &carros[count_veiculo].tipo_combustivel);
+                carros[count_veiculo].tipo_combustivel = toupper(carros[count_veiculo].tipo_combustivel);
             }
-            
+
+            switch (carros[count_veiculo].tipo_combustivel)
+            {
+            case 'A':
+                printf("Tipo escolhido: Alcool.\n");
+                break;
+
+            case 'G':
+                printf("Tipo escolhido: Gasolina.\n");
+                break;
+
+            default:
+                printf("Nao e um combustível valido.\n");
+                break;
+            }
+
             printf("Digite o preco: ");
             scanf("%f", &carros[count_veiculo].preco);
 
@@ -68,18 +86,42 @@ int main()
         }
         else if (opcao == 2)
         {
+
+            if (count_veiculo == 0)
+            {
+                printf("Sem veiculos cadastrados.");
+            }
+            else
+            {
+                printf("Veiculos cadastrados:\n");
+                for (int i = 0; i < count_veiculo; i++)
+                {
+                    printf("Veiculo %i: %s, %s, %s, %s , %s \n", i + 1, carros[i].fabricante, carros[i].modelo, carros[i].ano, carros[i].preco, carros[i].cor);
+                }
+            }
+        }
+        else if (opcao == 3)
+        {
             printf("Finalizando...\n");
         }
         else
         {
             printf("Essa opcao nao existe.\n");
+            break;
         }
     }
 
-    printf("Carros cadastrados:\n");
-    for (int i = 0; i < count_veiculo; i++)
+    if (count_veiculo == 0)
     {
-        printf("%s\n", carros[i].modelo);
+        printf("Sem veiculos cadastrados.");
+    }
+    else
+    {
+        printf("Lista final de veiculos cadastrados:\n");
+        for (int i = 0; i < count_veiculo; i++)
+        {
+            printf("Veiculo %i: %s, %s, %s, %s \n", i + 1, carros[i].modelo, carros[i].ano, carros[i].preco, carros[i].cor);
+        }
     }
 
     return 0;
