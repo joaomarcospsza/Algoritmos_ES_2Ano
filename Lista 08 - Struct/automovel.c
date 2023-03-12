@@ -31,6 +31,15 @@ int main()
         printf("Informe a opcao: ");
         scanf("%i", &opcao);
 
+        while (opcao < 1 || opcao > 3)
+        {
+            printf("Opcao invalida. Por favor, insira uma opcao valida: \n");
+            printf("1 - Cadastrar novo Veiculo \n");
+            printf("2 - Veiculos cadastrados \n");
+            printf("3 - Sair \n");
+            scanf("%i", &opcao);
+        }
+
         if (opcao == 1)
         {
             printf("Digite o fabricante: ");
@@ -99,11 +108,6 @@ int main()
         else if (opcao == 3)
         {
             printf("Finalizando...\n");
-        }
-        else
-        {
-            printf("Essa opcao nao existe.\n");
-            break;
         }
     }
 
