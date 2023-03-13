@@ -38,19 +38,19 @@ int main()
 
         if (opcao == 1)
         {
-            printf("Codigo Numerico: ");
+            printf("Digite o codigo do tecido %i: ", count_tecido + 1);
             scanf("%i", &tecidos[count_tecido].codigo_numerico);
 
-            printf("Descricao: ");
+            printf("Digite a descricao do tecido %i: ", count_tecido + 1);
             scanf("%s", tecidos[count_tecido].descricao);
 
-            printf("Preco por metro: ");
+            printf("Digite o preco do metro do tecido %i: ", count_tecido + 1);
             scanf("%f", &tecidos[count_tecido].preco_metro);
 
-            printf("Quantidade estoque em metros: ");
+            printf("Digite a quantidade em estoque (em metros) do tecido %i:", count_tecido + 1);
             scanf("%i", &tecidos[count_tecido].quantida_estoque_metro);
 
-            printf("Tecido registrado com sucesso. \n");
+            printf("O %i tecido foi registrado com sucesso. \n", count_tecido + 1);
 
             count_tecido++;
         }
@@ -88,7 +88,7 @@ int main()
                         printf("Todos os Tecidos Registrados: \n");
                         for (int i = 0; i < count_tecido; i++)
                         {
-                            printf("N:%i, Codigo Numerico:%i, Preco por Metro:%.2f, Quantidade Estoque em Metros:%i \n", i + 1, tecidos[i].codigo_numerico, tecidos[i].preco_metro, tecidos[i].quantida_estoque_metro);
+                            printf("Tecido:%i, Codigo Numerico:%i, Preco por Metro:%.2f, Quantidade Estoque em Metros:%i \n", i + 1, tecidos[i].codigo_numerico, tecidos[i].preco_metro, tecidos[i].quantida_estoque_metro);
                         }
                     }
                     else if (opcao_relatorio == 2)
@@ -96,7 +96,7 @@ int main()
                         int tecidos_com_estoque_baixo = 0;
                         for (int i = 0; i < count_tecido; i++)
                         {
-                            if (tecidos[i].quantida_estoque_metro <= 50)
+                            if (tecidos[i].quantida_estoque_metro < 50)
                             {
                                 tecidos_com_estoque_baixo++;
                             }
@@ -107,9 +107,9 @@ int main()
                             printf("Tecidos com Estoque inferior a 50 metros: \n");
                             for (int i = 0; i < count_tecido; i++)
                             {
-                                if (tecidos[i].quantida_estoque_metro <= 50)
+                                if (tecidos[i].quantida_estoque_metro < 50)
                                 {
-                                    printf("N:%i, Codigo Numerico:%i, Quantidade Estoque em Metros:%i \n", i + 1, tecidos[i].codigo_numerico, tecidos[i].quantida_estoque_metro);
+                                    printf("Tecido:%i, Codigo Numerico:%i, Quantidade Estoque em Metros:%i \n", i + 1, tecidos[i].codigo_numerico, tecidos[i].quantida_estoque_metro);
                                 }
                             }
                         }
@@ -123,7 +123,7 @@ int main()
                         int tecidos_com_valor_baixo = 0;
                         for (int i = 0; i < count_tecido; i++)
                         {
-                            if (tecidos[i].preco_metro <= 0.60)
+                            if (tecidos[i].preco_metro < 0.6)
                             {
                                 tecidos_com_valor_baixo++;
                             }
@@ -134,9 +134,9 @@ int main()
                             printf("Tecidos com o valor abaixo R$0,60: \n");
                             for (int i = 0; i < count_tecido; i++)
                             {
-                                if (tecidos[i].preco_metro <= 0.60)
+                                if (tecidos[i].preco_metro < 0.6)
                                 {
-                                    printf("N:%i, Codigo Numerico:%i, Preco por Metro:%.2f, Quantidade Estoque em Metros:%i \n", i + 1, tecidos[i].codigo_numerico, tecidos[i].preco_metro, tecidos[i].quantida_estoque_metro);
+                                    printf("Tecido:%i, Codigo Numerico:%i, Preco por Metro:%.2f, Quantidade Estoque em Metros:%i \n", i + 1, tecidos[i].codigo_numerico, tecidos[i].preco_metro, tecidos[i].quantida_estoque_metro);
                                 }
                             }
                         }
